@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "Generate commands for opening paths and URIs with the system handler"
 documentation = "https://docs.rs/open_cmd"
-license-file = "LICENSE"
+license = "MIT"
 repository = "https://github.com/Shadow53/open_cmd"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

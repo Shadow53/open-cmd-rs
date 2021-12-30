@@ -53,8 +53,7 @@
     while_true
 )]
 
-
-use std::{process::Command, path::PathBuf};
+use std::{path::PathBuf, process::Command};
 use thiserror::Error;
 
 mod path_or_uri;
@@ -76,7 +75,7 @@ use windows::open as sys_open;
 pub use path_or_uri::PathOrURI;
 
 /// Type alias for the most common results in this crate.
-pub type Result<T=Command, E=Error> = std::result::Result<T, E>;
+pub type Result<T = Command, E = Error> = std::result::Result<T, E>;
 
 /// The environment variable checked when opening in a web browser.
 pub const BROWSER_ENV: &str = "BROWSER";
@@ -118,8 +117,9 @@ fn ensure_command(cmd: &str) -> Result<()> {
 
     which::which(cmd)
         .map(|_| ())
-        .map_err(|error| {
-            Error::NotFound { exe: cmd.to_string(), error }
+        .map_err(|error| Error::NotFound {
+            exe: cmd.to_string(),
+            error,
         })
 }
 
@@ -159,7 +159,10 @@ fn open_env(env: &str, target: &PathOrURI) -> Result {
 /// # Errors
 ///
 /// See [`Error`].
-pub fn open<T>(target: T) -> Result where PathOrURI: From<T> {
+pub fn open<T>(target: T) -> Result
+where
+    PathOrURI: From<T>,
+{
     sys_open(&PathOrURI::from(target))
 }
 
@@ -169,7 +172,10 @@ pub fn open<T>(target: T) -> Result where PathOrURI: From<T> {
 /// # Errors
 ///
 /// See [`Error`].
-pub fn open_browser<T>(target: T) -> Result where PathOrURI: From<T> {
+pub fn open_browser<T>(target: T) -> Result
+where
+    PathOrURI: From<T>,
+{
     open_env(BROWSER_ENV, &PathOrURI::from(target))
 }
 
@@ -179,6 +185,9 @@ pub fn open_browser<T>(target: T) -> Result where PathOrURI: From<T> {
 /// # Errors
 ///
 /// See [`Error`].
-pub fn open_editor<T>(target: T) -> Result where PathOrURI: From<T> {
+pub fn open_editor<T>(target: T) -> Result
+where
+    PathOrURI: From<T>,
+{
     open_env(EDITOR_ENV, &PathOrURI::from(target))
 }

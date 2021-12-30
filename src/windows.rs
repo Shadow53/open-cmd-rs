@@ -10,4 +10,3 @@ pub(crate) fn open(target: &PathOrURI) -> crate::Result {
     cmd.args(&["/c", "start", target.url()?.to_string()]);
     Ok(cmd)
 }
-

@@ -8,6 +8,6 @@ pub(crate) fn open(target: &PathOrURI) -> crate::Result {
     tracing::debug!("opening {} with default Windows handler", target);
 
     let mut cmd = Command::new("cmd");
-    cmd.args(&["/c", "start", target.uri()?.to_string()]);
+    cmd.args(&["/c", "start", target.uri()?.to_string().as_str()]);
     Ok(cmd)
 }

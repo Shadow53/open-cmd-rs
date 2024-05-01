@@ -12,6 +12,6 @@ repository = "https://github.com/Shadow53/open_cmd"
 [dependencies]
 path-clean = "0.1"
 thiserror = "1.0"
-tracing = { version = "0.1", optional = true }
+tracing = { version = "0.1.40", optional = true }
 url = "2.2"
 which = "4.2"

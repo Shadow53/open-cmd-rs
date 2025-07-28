@@ -1,6 +1,6 @@
 [package]
 name = "open_cmd"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Generate commands for opening paths and URIs with the system handler"
 documentation = "https://docs.rs/open_cmd"

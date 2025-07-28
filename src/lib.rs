@@ -16,7 +16,6 @@
     absolute_paths_not_starting_with_crate,
     anonymous_parameters,
     bad_style,
-    const_err,
     dead_code,
     keyword_idents,
     improper_ctypes,
@@ -31,13 +30,10 @@
     overflowing_literals,
     path_statements,
     patterns_in_fns_without_body,
-    pointer_structural_match,
-    private_in_public,
     semicolon_in_expressions_from_macros,
     single_use_lifetimes,
     trivial_casts,
     trivial_numeric_casts,
-    unaligned_references,
     unconditional_recursion,
     unreachable_pub,
     unsafe_code,
@@ -86,7 +82,7 @@ pub const EDITOR_ENV: &str = "EDITOR";
 /// Errors that may occur when generating a [`Command`].
 pub enum Error {
     /// Failed to convert a file path to a URI. This may be returned on Windows, where this is used
-    /// to ensure no odd behavior with confusing paths and CLi options (which start with a `/` on
+    /// to ensure no odd behavior with confusing paths and CLI options (which start with a `/` on
     /// Windows).
     ///
     /// See [`PathOrURI::url()`] for possible error cases.

@@ -36,13 +36,13 @@ impl PathOrURI {
     ///
     /// - The cleaned path does not resolve to an absolute path.
     /// - If the contained path is relative and the current directory does not exist or cannot be
-    /// accessed (i.e. [`std::env::current_dir`] fails).
+    ///   accessed (i.e. [`std::env::current_dir`] fails).
     pub fn uri(&self) -> Result<Url> {
         match self {
             Self::URI(url) => Ok(url.clone()),
             Self::Path(path) => {
                 let new_path = std::env::current_dir()?.join(path).clean();
-                Url::from_file_path(new_path).map_err(|_| Error::FileToURI(path.clone()))
+                Url::from_file_path(new_path).map_err(|()| Error::FileToURI(path.clone()))
             }
         }
     }
@@ -79,7 +79,7 @@ impl Display for PathOrURI {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Path(path) => write!(f, "{}", path.display()),
-            Self::URI(uri) => write!(f, "{}", uri),
+            Self::URI(uri) => write!(f, "{uri}"),
         }
     }
 }
